@@ -1,0 +1,53 @@
+@import '@fontsource/manrope/greek-600.css';
+@import '@fontsource/manrope/greek-700.css';
+@import '@fontsource/manrope/greek-800.css';
+@import '@fontsource/manrope/latin-600.css';
+@import '@fontsource/manrope/latin-700.css';
+@import '@fontsource/manrope/latin-800.css';
+@import '@fontsource/fira-sans-extra-condensed/greek-700.css';
+@import '@fontsource/fira-sans-extra-condensed/greek-800.css';
+@import '@fontsource/fira-sans-extra-condensed/latin-700.css';
+@import '@fontsource/fira-sans-extra-condensed/latin-800.css';
+@import '@fontsource/inter/greek-400.css';
+@import '@fontsource/inter/greek-500.css';
+@import '@fontsource/inter/greek-600.css';
+@import '@fontsource/inter/greek-700.css';
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-500.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/inter/latin-700.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #231f20;
+  --white: #ffffff;
+  --gold: #d2ab67;
+  --stage: #e9e8e8;
+  --ink-80: #4f4b4c;
+  --ink-60: #7b7979;
+  --gold-text: #8a6a2f;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--stage);
+  color: var(--ink);
+  font-family: 'Helvetica Neue', Helvetica, Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.bg-ink :focus-visible, .on-ink :focus-visible { outline-color: var(--gold); }
+button { cursor: pointer; }
+h1, h2, h3 { text-wrap: balance; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+.stripes-band { background: repeating-linear-gradient(90deg, var(--ink) 0 32px, #fff 32px 64px); }
+.fade-in { animation: fadeIn 1.2s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

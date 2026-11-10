@@ -1,0 +1,72 @@
+/* Printed-page styles. Pages are 495 × 700 CSS px (A4, 1 : 1.414).
+   The same components render the 3D textures, the 2D fallback, the screen-reader copy and Reading mode. */
+
+.kp-page {
+  width: 495px;
+  height: 700px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  color: #231f20;
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+.kp-page *, .kp-page *::before, .kp-page *::after { box-sizing: border-box; }
+.kp-page.kp-fluid { width: 100%; height: auto; min-height: 0; overflow: visible; }
+.kp-page.kp-fluid .kp-gut { display: none; }
+.kp-page.kp-fluid .kp-folio { margin-top: 28px; }
+
+.kp-in { padding: 40px 40px 34px 44px; flex: 1; display: flex; flex-direction: column; }
+.kp-right .kp-in { padding: 40px 44px 34px 40px; }
+.kp-fluid .kp-in { padding: 24px 20px 28px; }
+
+.kp-rh { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border-bottom: 1px solid #231f20; padding-bottom: 8px; font-size: 11px; color: #4f4b4c; }
+.kp-ink .kp-rh { border-color: rgba(255,255,255,.15); color: rgba(255,255,255,.7); }
+
+.kp-h2 { margin: 22px 0 18px; font-family: Manrope, sans-serif; font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -0.03em; text-wrap: balance; }
+.kp-cond { font-family: 'Fira Sans Extra Condensed', 'Arial Narrow', sans-serif; font-weight: 800; text-transform: uppercase; }
+.kp-h3 { margin: 0; padding: 6px 0; font-size: 12px; font-weight: 700; border-bottom: 1px solid #231f20; display: flex; justify-content: space-between; }
+.kp-ink .kp-h3 { border-color: rgba(255,255,255,.15); }
+.kp-h3-lg { margin: 0; padding-bottom: 6px; border-bottom: 2px solid #231f20; font-family: Manrope, sans-serif; font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+
+.kp-row { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto 40px; align-items: baseline; gap: 8px; padding: 4px 0; border-bottom: 1px solid #ecebeb; font-size: 12.5px; line-height: 1.2; }
+.kp-row.kp-tight { padding: 3.5px 0; }
+.kp-num { font-family: Manrope, sans-serif; font-weight: 800; color: #8a6a2f; font-variant-numeric: tabular-nums; }
+.kp-mut { color: #4f4b4c; font-size: 11.5px; }
+.kp-ink .kp-mut { color: rgba(255,255,255,.7); }
+
+.kp-folio { margin: auto 0 0; display: flex; gap: 10px; font-size: 11px; color: #7b7979; }
+.kp-right .kp-folio { justify-content: flex-end; }
+.kp-folio b { color: #231f20; }
+.kp-ink { background: #231f20; color: #fff; }
+.kp-ink .kp-folio { color: rgba(255,255,255,.7); }
+.kp-ink .kp-folio b { color: #fff; }
+
+.kp-slot { background: #dcdbdb; position: relative; overflow: hidden; }
+.kp-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.kp-cap { position: absolute; left: 44px; bottom: 16px; font-size: 11px; color: #4f4b4c; }
+.kp-ph { color: #8a6a2f; font-weight: 600; }
+
+.kp-gut { position: absolute; top: 0; bottom: 0; width: 40px; pointer-events: none; z-index: 3; }
+.kp-left .kp-gut { right: 0; background: linear-gradient(to left, rgba(35,31,32,.14), rgba(35,31,32,0)); }
+.kp-right .kp-gut { left: 0; background: linear-gradient(to right, rgba(35,31,32,.16), rgba(35,31,32,0)); }
+.kp-ink.kp-left .kp-gut { background: linear-gradient(to left, rgba(0,0,0,.4), rgba(0,0,0,0)); }
+
+.kp-stripes { background: repeating-linear-gradient(90deg, #231f20 0 41.25px, #fff 41.25px 82.5px); }
+.kp-st { display: flex; justify-content: space-between; gap: 8px; padding: 5px 0; border-bottom: 1px solid #ecebeb; font-size: 12.5px; }
+.kp-t { width: 100%; border-collapse: collapse; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.kp-t th, .kp-t td { padding: 7px 4px; text-align: right; }
+.kp-t .l { text-align: left; }
+.kp-hl { background: #231f20; color: #fff; }
+.kp-chip { display: inline-block; min-width: 22px; text-align: center; font-size: 11px; font-weight: 700; padding: 2px 0; }
+
+/* cover foil mask: blue = metal, green = roughness */
+.kp-mask, .kp-mask * { color: rgb(0,150,0) !important; background: rgb(0,150,0) !important; border-color: rgb(0,150,0) !important; }
+.kp-mask img { opacity: 0 !important; }
+.kp-mask .kp-gold, .kp-mask .kp-gold * { color: rgb(0,60,255) !important; border-color: rgb(0,60,255) !important; background: transparent !important; }
+.kp-mask .kp-goldbg { background: rgb(0,60,255) !important; }

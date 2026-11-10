@@ -1,0 +1,789 @@
+{
+ "id": "00000000-0000-4000-8000-000000000005",
+ "number": 5,
+ "season": "2026/27",
+ "opponent": "Παναθηναϊκός",
+ "opponent_crest_url": "",
+ "is_home": true,
+ "matchday": 5,
+ "competition": "Stoiximan Super League",
+ "stadium": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+ "kickoff_at": "2026-11-22T17:30:00Z",
+ "publish_at": "2026-11-20T17:30:00Z",
+ "expires_at": "2026-11-23T20:00:00Z",
+ "archive_access": "gated",
+ "status": "published",
+ "countdown_sponsor_url": "",
+ "cover_photo_url": "",
+ "cover_cutout_url": "",
+ "cover_tone": "ink",
+ "cover_lines": [
+  {
+   "text": "Καλαμάτα",
+   "gold": false
+  },
+  {
+   "text": "Παναθηναϊκός",
+   "gold": false
+  }
+ ],
+ "sections": [
+  {
+   "type": "welcome",
+   "visible": true,
+   "data": {
+    "title": "Καλώς ήρθατε",
+    "message": "[ΣΥΜΠΛΗΡΩΣΤΕ] Μήνυμα προέδρου ή προπονητή για τον αγώνα, έως 600 χαρακτήρες.",
+    "signatureName": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+    "signatureRole": "Πρόεδρος, Καλαμάτα Π.Α.Ε.",
+    "portraitUrl": ""
+   }
+  },
+  {
+   "type": "contents",
+   "visible": true,
+   "data": {
+    "photoUrl": ""
+   }
+  },
+  {
+   "type": "squad",
+   "visible": true,
+   "data": {
+    "goalkeepers": [
+     {
+      "number": "1",
+      "name": "Ιωάννης Γκέλιος",
+      "nationality": "Ελλάδα",
+      "birthYear": "1992"
+     },
+     {
+      "number": "26",
+      "name": "Παναγιώτης Γκίνης",
+      "nationality": "Ελλάδα",
+      "birthYear": "1999"
+     },
+     {
+      "number": "40",
+      "name": "Νίκολα Βασίλιεβιτς",
+      "nationality": "Σερβία",
+      "birthYear": "1996"
+     },
+     {
+      "number": "70",
+      "name": "Παύλος Βαρέλας",
+      "nationality": "Ελλάδα",
+      "birthYear": "2008"
+     }
+    ],
+    "defenders": [
+     {
+      "number": "3",
+      "name": "Άλεξ Πέρες",
+      "nationality": "Μοζαμβίκη",
+      "birthYear": "2006"
+     },
+     {
+      "number": "4",
+      "name": "Στέφανος Στρουγγής",
+      "nationality": "Ελλάδα",
+      "birthYear": "1997"
+     },
+     {
+      "number": "12",
+      "name": "Ηλίας Χατζηθεοδωρίδης",
+      "nationality": "Ελλάδα",
+      "birthYear": "1997"
+     },
+     {
+      "number": "17",
+      "name": "Χούλιο Αλόνσο",
+      "nationality": "Ισπανία",
+      "birthYear": "1998"
+     },
+     {
+      "number": "18",
+      "name": "Παναγιώτης Παναγιώτου",
+      "nationality": "Ελλάδα",
+      "birthYear": "2002"
+     },
+     {
+      "number": "19",
+      "name": "Τζούνιορ Μπακαγιόκο",
+      "nationality": "Γαλλία · Ακτή Ελεφ.",
+      "birthYear": "1995"
+     },
+     {
+      "number": "22",
+      "name": "Πέτρος Καλουτσικίδης",
+      "nationality": "Ελλάδα",
+      "birthYear": "2001"
+     },
+     {
+      "number": "29",
+      "name": "Ούρος Ιγκνιάτοβιτς",
+      "nationality": "Σερβία",
+      "birthYear": "2001"
+     },
+     {
+      "number": "42",
+      "name": "Δημήτρης Ναούμης",
+      "nationality": "Ελλάδα",
+      "birthYear": "2004"
+     },
+     {
+      "number": "44",
+      "name": "Αξέλ Γκεσάν",
+      "nationality": "Γαλλία · Ακτή Ελεφ.",
+      "birthYear": "2004"
+     },
+     {
+      "number": "97",
+      "name": "Αντόνιο Ροντρίγκες",
+      "nationality": "Βραζιλία",
+      "birthYear": "1997"
+     }
+    ],
+    "midfielders": [
+     {
+      "number": "5",
+      "name": "Άαρον Μάρτιν",
+      "nationality": "Ισπανία",
+      "birthYear": "2006"
+     },
+     {
+      "number": "6",
+      "name": "Τζιμπρίλ Ντιάρα",
+      "nationality": "Σενεγάλη",
+      "birthYear": "2002"
+     },
+     {
+      "number": "7",
+      "name": "Χουάν Καταλντί",
+      "nationality": "Αργεντινή · Ιταλία",
+      "birthYear": "1998"
+     },
+     {
+      "number": "8",
+      "name": "Αργύρης Λιατσκούρας",
+      "nationality": "Ελλάδα",
+      "birthYear": "2006"
+     },
+     {
+      "number": "14",
+      "name": "Μπεν Ζιντάν",
+      "nationality": "Ακτή Ελεφ.",
+      "birthYear": "2005"
+     },
+     {
+      "number": "16",
+      "name": "Γιούτζιν Φρίμπονγκ",
+      "nationality": "Γκάνα",
+      "birthYear": "2003"
+     },
+     {
+      "number": "21",
+      "name": "Μαρσελίνο Καρεάσο",
+      "nationality": "Κολομβία",
+      "birthYear": "1999"
+     },
+     {
+      "number": "23",
+      "name": "Γκονζάλο Πινιέιρο",
+      "nationality": "Αργεντινή",
+      "birthYear": "2000"
+     },
+     {
+      "number": "24",
+      "name": "Έρικ Χάμζα",
+      "nationality": "Ελλάδα · Αλβανία",
+      "birthYear": "2007"
+     }
+    ],
+    "forwards": [
+     {
+      "number": "9",
+      "name": "Τζιοβάνι Μπολίβαρ",
+      "nationality": "Βενεζουέλα",
+      "birthYear": "2001"
+     },
+     {
+      "number": "10",
+      "name": "Άρνορ Σιγκούρντσον",
+      "nationality": "Ισλανδία",
+      "birthYear": "1999"
+     },
+     {
+      "number": "11",
+      "name": "Χοσέτε Μιράντα",
+      "nationality": "Ισημ. Γουινέα",
+      "birthYear": "1998"
+     },
+     {
+      "number": "20",
+      "name": "Αχμάντ Μορέιρα",
+      "nationality": "Γουινέα",
+      "birthYear": "1995"
+     },
+     {
+      "number": "32",
+      "name": "Χουλιάν Μπονέτο",
+      "nationality": "Αργεντινή",
+      "birthYear": "1994"
+     },
+     {
+      "number": "64",
+      "name": "Σάββας Μουζάκης",
+      "nationality": "Ελλάδα",
+      "birthYear": "2004"
+     },
+     {
+      "number": "77",
+      "name": "Κένεθ Βάργκας",
+      "nationality": "Κόστα Ρίκα",
+      "birthYear": "2002"
+     },
+     {
+      "number": "91",
+      "name": "Ντάβιντ Κουρμινόφσκι",
+      "nationality": "Πολωνία",
+      "birthYear": "1999"
+     },
+     {
+      "number": "99",
+      "name": "Σταύρος Αγγελής",
+      "nationality": "Ελλάδα",
+      "birthYear": "1999"
+     }
+    ],
+    "coach": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+   }
+  },
+  {
+   "type": "transfers",
+   "visible": true,
+   "data": {
+    "leadName": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+    "leadPosition": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+    "leadFromClub": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+    "leadQuote": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+    "leadPhotoUrl": "",
+    "others": [
+     {
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "fromClub": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "photoUrl": ""
+     },
+     {
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "fromClub": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "photoUrl": ""
+     },
+     {
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "fromClub": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "photoUrl": ""
+     },
+     {
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "fromClub": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "photoUrl": ""
+     }
+    ]
+   }
+  },
+  {
+   "type": "owner_staff",
+   "visible": true,
+   "data": {
+    "ownerName": "Γιώργος Πράσσας",
+    "ownerRole": "Ιδιοκτήτης",
+    "ownerBio": "Ανέλαβε τον Ιούνιο του 2019 (Γ' Εθνική). Εξυγίανε την ομάδα από χρέη και ατασθαλίες. Σε επτά χρόνια ανέβασε την Καλαμάτα δύο κατηγορίες. Επιστροφή στη Super League για πρώτη φορά μετά το 2000/01. Με δικά του έξοδα έφτιαξε το προπονητικό κέντρο και αναβάθμισε το Δημοτικό Στάδιο Παραλίας.",
+    "ownerPhotoUrl": "",
+    "staff": [
+     {
+      "role": "Προπονητής",
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "role": "Βοηθός προπονητή",
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "role": "Προπονητής τερματοφυλάκων",
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "role": "Γυμναστής",
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "role": "Αναλυτής απόδοσης",
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "role": "Τεχνικός διευθυντής",
+      "name": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     }
+    ]
+   }
+  },
+  {
+   "type": "last_match",
+   "visible": true,
+   "data": {
+    "label": "4η αγωνιστική · Έδρα",
+    "homeTeam": "Καλαμάτα",
+    "awayTeam": "Βόλος",
+    "homeScore": "3",
+    "awayScore": "1",
+    "goals": [
+     {
+      "minute": "26'",
+      "scorer": "Γκονζάλες (Βόλος)",
+      "side": "away",
+      "score": "0–1"
+     },
+     {
+      "minute": "59'",
+      "scorer": "Χάμζα",
+      "side": "home",
+      "score": "1–1"
+     },
+     {
+      "minute": "84'",
+      "scorer": "Μπολίβαρ",
+      "side": "home",
+      "score": "2–1"
+     },
+     {
+      "minute": "90+3'",
+      "scorer": "Χάμζα",
+      "side": "home",
+      "score": "3–1"
+     }
+    ],
+    "subs": [
+     {
+      "minute": "65'",
+      "on": "Λιατσκούρας",
+      "off": "Μπονέτο"
+     },
+     {
+      "minute": "78'",
+      "on": "Ντιάρα",
+      "off": "Σιγκούρντσον"
+     },
+     {
+      "minute": "90'",
+      "on": "Μπακαγιόκο",
+      "off": "Πινιέιρο"
+     },
+     {
+      "minute": "90'",
+      "on": "Χατζηθεοδωρίδης",
+      "off": "Μπολίβαρ"
+     }
+    ]
+   }
+  },
+  {
+   "type": "season_stats",
+   "visible": true,
+   "data": {
+    "afterLabel": "Μετά από 4 αγωνιστικές",
+    "scorers": [
+     {
+      "name": "Τζιοβάνι Μπολίβαρ",
+      "value": "2"
+     },
+     {
+      "name": "Έρικ Χάμζα",
+      "value": "2"
+     },
+     {
+      "name": "Κένεθ Βάργκας",
+      "value": "1"
+     }
+    ],
+    "assists": [
+     {
+      "name": "Αχμάντ Μορέιρα",
+      "value": "3"
+     },
+     {
+      "name": "Τζιμπρίλ Ντιάρα",
+      "value": "1"
+     },
+     {
+      "name": "Χουάν Καταλντί",
+      "value": "1"
+     }
+    ],
+    "yellow": [
+     {
+      "name": "Χουάν Καταλντί",
+      "value": "2"
+     },
+     {
+      "name": "Αχμάντ Μορέιρα",
+      "value": "2"
+     },
+     {
+      "name": "Στέφανος Στρουγγής",
+      "value": "2"
+     },
+     {
+      "name": "Τζιμπρίλ Ντιάρα",
+      "value": "2"
+     },
+     {
+      "name": "Πέτρος Καλουτσικίδης",
+      "value": "1"
+     },
+     {
+      "name": "Αντόνιο Ροντρίγκες",
+      "value": "1"
+     },
+     {
+      "name": "Ηλίας Χατζηθεοδωρίδης",
+      "value": "1"
+     },
+     {
+      "name": "Άρνορ Σιγκούρντσον",
+      "value": "1"
+     },
+     {
+      "name": "Τζιοβάνι Μπολίβαρ",
+      "value": "1"
+     },
+     {
+      "name": "Χούλιο Αλόνσο",
+      "value": "1"
+     },
+     {
+      "name": "Γκονζάλο Πινιέιρο",
+      "value": "1"
+     }
+    ],
+    "red": [
+     {
+      "name": "Τζιοβάνι Μπολίβαρ",
+      "value": "1"
+     },
+     {
+      "name": "Χουάν Καταλντί",
+      "value": "1"
+     }
+    ]
+   }
+  },
+  {
+   "type": "fixtures",
+   "visible": true,
+   "data": {
+    "title": "5η αγωνιστική",
+    "fixtures": [
+     {
+      "when": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "home": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "away": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "when": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "home": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "away": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "when": "Κυρ. 22/11 · 19:30",
+      "home": "Καλαμάτα",
+      "away": "Παναθηναϊκός"
+     },
+     {
+      "when": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "home": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "away": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "when": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "home": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "away": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "when": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "home": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "away": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     },
+     {
+      "when": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "home": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "away": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+     }
+    ]
+   }
+  },
+  {
+   "type": "standings",
+   "visible": true,
+   "data": {
+    "afterLabel": "Μετά την 4η αγωνιστική",
+    "rows": [
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "Καλαμάτα",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     },
+     {
+      "team": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+      "played": "4",
+      "won": "",
+      "drawn": "",
+      "lost": "",
+      "goalsFor": "",
+      "goalsAgainst": "",
+      "points": ""
+     }
+    ]
+   }
+  },
+  {
+   "type": "head_to_head",
+   "visible": true,
+   "data": {
+    "rangeLabel": "Όλες οι αναμετρήσεις στο πρωτάθλημα, 1972–2001",
+    "photoUrl": "",
+    "games": [
+     {
+      "season": "1972/73",
+      "kalamataHome": true,
+      "homeGoals": "0",
+      "awayGoals": "2"
+     },
+     {
+      "season": "1972/73",
+      "kalamataHome": false,
+      "homeGoals": "2",
+      "awayGoals": "2"
+     },
+     {
+      "season": "1974/75",
+      "kalamataHome": true,
+      "homeGoals": "2",
+      "awayGoals": "0"
+     },
+     {
+      "season": "1974/75",
+      "kalamataHome": false,
+      "homeGoals": "4",
+      "awayGoals": "1"
+     },
+     {
+      "season": "1995/96",
+      "kalamataHome": true,
+      "homeGoals": "0",
+      "awayGoals": "1"
+     },
+     {
+      "season": "1995/96",
+      "kalamataHome": false,
+      "homeGoals": "4",
+      "awayGoals": "0"
+     },
+     {
+      "season": "1996/97",
+      "kalamataHome": true,
+      "homeGoals": "1",
+      "awayGoals": "0"
+     },
+     {
+      "season": "1996/97",
+      "kalamataHome": false,
+      "homeGoals": "3",
+      "awayGoals": "0"
+     },
+     {
+      "season": "1997/98",
+      "kalamataHome": true,
+      "homeGoals": "0",
+      "awayGoals": "2"
+     },
+     {
+      "season": "1997/98",
+      "kalamataHome": false,
+      "homeGoals": "1",
+      "awayGoals": "0"
+     },
+     {
+      "season": "1999/00",
+      "kalamataHome": true,
+      "homeGoals": "0",
+      "awayGoals": "0"
+     },
+     {
+      "season": "1999/00",
+      "kalamataHome": false,
+      "homeGoals": "5",
+      "awayGoals": "0"
+     },
+     {
+      "season": "2000/01",
+      "kalamataHome": true,
+      "homeGoals": "2",
+      "awayGoals": "4"
+     },
+     {
+      "season": "2000/01",
+      "kalamataHome": false,
+      "homeGoals": "1",
+      "awayGoals": "0"
+     }
+    ]
+   }
+  },
+  {
+   "type": "sponsors",
+   "visible": true,
+   "data": {
+    "sponsorName": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+    "adImageUrl": "",
+    "link": ""
+   }
+  },
+  {
+   "type": "back_page",
+   "visible": true,
+   "data": {
+    "nextOpponent": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+    "nextDate": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+    "nextTime": "[ΣΥΜΠΛΗΡΩΣΤΕ]",
+    "nextStadium": "[ΣΥΜΠΛΗΡΩΣΤΕ]"
+   }
+  }
+ ],
+ "page_manifest": null
+}
