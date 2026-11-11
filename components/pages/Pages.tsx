@@ -149,7 +149,8 @@ function Squad({ d, issue, part, n, side, fluid }: { d: SquadData; issue: Issue;
 function Transfers({ d, issue, n, side, fluid }: { d: TransfersData; issue: Issue; n: number; side: Side; fluid?: boolean }) {
   return (
     <Frame side={side} fluid={fluid}>
-      <Slot url={d.leadPhotoUrl} caption="Φωτογραφία κεντρικής μεταγραφής · 4:3" style={{ height: 360, flex: 'none', display: 'flex', alignItems: 'flex-end', paddingLeft: 44 }} alt={d.leadName}>
+      <Slot url={d.leadPhotoUrl} caption="" style={{ height: 360, flex: 'none', display: 'flex', alignItems: 'flex-end', paddingLeft: 44, position: 'relative' }} alt={d.leadName}>
+        {!d.leadPhotoUrl && <span className="kp-cap" style={{ position: 'absolute', left: 44, top: 24, bottom: 'auto' }}>Φωτογραφία κεντρικής μεταγραφής · 4:3</span>}
         <h2 className="kp-cond" style={{ position: 'relative', margin: '0 0 -12px', fontSize: 76, lineHeight: 0.86, color: d.leadPhotoUrl ? '#fff' : '#231f20' }}>Μεταγραφές<br />{issue.season}</h2>
       </Slot>
       <div style={{ padding: '30px 40px 0 44px' }}>
@@ -271,11 +272,11 @@ function Fixtures({ d, issue, n, side, fluid }: { d: FixturesData; issue: Issue;
         {d.fixtures.map((f, i) => {
           const hl = isKalamata(f.home) || isKalamata(f.away);
           return (
-            <div key={i} className={hl ? 'kp-hl' : ''} style={{ display: 'grid', gridTemplateColumns: '72px 1fr 14px 1fr', gap: 8, alignItems: 'center', padding: hl ? '11px 10px' : '11px 0', margin: hl ? '0 -10px' : 0, borderBottom: hl ? 'none' : '1px solid #ecebeb', fontSize: 14 }}>
-              <span style={{ fontSize: 11.5, lineHeight: 1.3, color: hl ? 'rgba(255,255,255,.7)' : '#7b7979' }}><Ph v={f.when} fallback="[Ημ. · ώρα]" /></span>
-              <span style={{ fontWeight: hl ? 700 : 400 }}><Ph v={f.home} /></span>
-              <span style={{ color: hl ? '#fff' : '#7b7979' }}>–</span>
-              <span style={{ fontWeight: hl ? 700 : 400 }}><Ph v={f.away} /></span>
+            <div key={i} className={hl ? 'kp-hl' : ''} style={{ display: 'grid', gridTemplateColumns: '76px minmax(0, 1fr) 14px minmax(0, 1fr)', gap: 8, alignItems: 'center', padding: hl ? '11px 10px' : '11px 0', margin: hl ? '0 -10px' : 0, borderBottom: hl ? 'none' : '1px solid #ecebeb', fontSize: 13.5 }}>
+              <span style={{ fontSize: 11, lineHeight: 1.25, color: hl ? 'rgba(255,255,255,.7)' : '#7b7979', overflowWrap: 'break-word', wordBreak: 'break-word', overflow: 'hidden' }}><Ph v={f.when} fallback="[Ημ. · ώρα]" /></span>
+              <span style={{ fontWeight: hl ? 700 : 400, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}><Ph v={f.home} /></span>
+              <span style={{ color: hl ? '#fff' : '#7b7979', textAlign: 'center' }}>–</span>
+              <span style={{ fontWeight: hl ? 700 : 400, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}><Ph v={f.away} /></span>
             </div>
           );
         })}

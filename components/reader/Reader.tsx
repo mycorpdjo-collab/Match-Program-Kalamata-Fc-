@@ -96,7 +96,7 @@ export default function Reader({ issue, pages, toc, intro = false, preview = fal
     let cancelled = false;
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     const reduce2d = conn?.saveData || !hasWebGL();
-    const start = hashPage() ?? (intro ? 0 : 1);
+    const start = hashPage() ?? 0;
 
     if (reduce2d) {
       setMode('2d');
@@ -136,7 +136,6 @@ export default function Reader({ issue, pages, toc, intro = false, preview = fal
       }) as BookApi;
       apiRef.current = api;
       setMode('3d');
-      if (start === 0 && intro) setTimeout(() => api.open(), reduce ? 0 : 700);
     })().catch((err) => {
       console.error(err);
       if (!cancelled) setMode('2d');
