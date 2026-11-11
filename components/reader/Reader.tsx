@@ -70,6 +70,8 @@ export default function Reader({ issue, pages, toc, intro = false, preview = fal
   const [progress, setProgress] = useState(0);
   const [book, setBook] = useState<BookState | null>(null);
   const [reading, setReading] = useState(false);
+  const [viewMode, setViewMode] = useState<'3d' | 'scroll'>('3d');
+  const [exportingPdf, setExportingPdf] = useState(false);
   const [thumbs, setThumbs] = useState(false);
   const [menu, setMenu] = useState(false);
   const [toast, setToast] = useState('');
@@ -211,13 +213,46 @@ export default function Reader({ issue, pages, toc, intro = false, preview = fal
     return () => clearTimeout(t);
   }, [visible, preview, issue.id]);
 
-  // in-page links inside the HTML pages (2D viewer & reading mode)
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(`section-${id}`);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // in-page links inside the HTML pages (2D viewer, scroll view & reading mode)
   const onPageClick = (e: React.MouseEvent) => {
     const a = (e.target as HTMLElement).closest('a[data-page]') as HTMLAnchorElement | null;
-    if (a) { e.preventDefault(); goTo(Number(a.dataset.page)); setReading(false); }
+    if (a) {
+      e.preventDefault();
+      const p = Number(a.dataset.page);
+      if (viewMode === 'scroll') {
+        scrollToSection(`page-${p}`);
+      } else {
+        goTo(p);
+        setReading(false);
+      }
+    }
   };
 
   const showToast = (msg: string) => { setToast(msg); setTimeout(() => setToast(''), 2400); };
+
+  const downloadPdf = async () => {
+    setMenu(false);
+    if (exportingPdf) return;
+    setExportingPdf(true);
+    showToast('Προετοιμασία PDF...');
+    try {
+      const { exportIssueToPdf } = await import('@/lib/pdf');
+      const ok = await exportIssueToPdf(issue, tex, (msg) => showToast(msg));
+      if (ok) showToast('Η λήψη του PDF ολοκληρώθηκε!');
+    } catch (err) {
+      console.error('PDF generation error:', err);
+      showToast('Σφάλμα λήψης PDF — άνοιγμα εκτύπωσης...');
+      if (typeof window !== 'undefined') window.print();
+    } finally {
+      setExportingPdf(false);
+    }
+  };
+
   const share = async () => {
     setMenu(false);
     const url = `${location.origin}/issue/${issue.number}${visible[0] ? `#page-${visible[0]}` : ''}`;
@@ -238,11 +273,33 @@ export default function Reader({ issue, pages, toc, intro = false, preview = fal
     <div className={`relative flex flex-col overflow-hidden bg-stage text-ink ${embedded ? 'h-full min-h-[520px]' : 'h-[100dvh] min-h-[560px]'}`}>
       <TextureSheet ref={sheetRef} issue={issue} pages={pages} toc={toc} />
 
-      <header className="relative z-20 grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-1 sm:grid-cols-[1fr_auto_1fr] px-4 py-3 text-[13px] sm:px-8 sm:py-4 sm:text-sm">
-        <span className="font-semibold">{fixtureTitle(issue)}</span>
-        <span className="hidden text-ink-80 sm:inline">{availability}</span>
-        <span className="justify-self-end text-ink-80">{issue.matchday}η αγωνιστική</span>
-        <span className="col-span-2 text-ink-80 sm:hidden">{availability}</span>
+      <header className="relative z-20 flex items-center justify-between px-4 py-2.5 text-[13px] sm:px-8 sm:py-3.5 sm:text-sm bg-stage/90 backdrop-blur-sm border-b border-ink/10">
+        <div className="flex items-center gap-2">
+          <span className="font-semibold">{fixtureTitle(issue)}</span>
+          <span className="hidden text-ink-80 sm:inline">· {issue.matchday}η αγωνιστική</span>
+          <span className="hidden text-ink-80 md:inline">· {availability}</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={downloadPdf}
+            disabled={exportingPdf}
+            className="flex items-center gap-1.5 bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-black active:scale-95 transition"
+            title="Λήψη του Match Programme σε PDF"
+          >
+            <Icon name="download" size={15} />
+            <span>PDF</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setViewMode(viewMode === 'scroll' ? '3d' : 'scroll')}
+            className="flex items-center gap-1.5 border border-ink/20 bg-white px-3 py-1.5 text-xs font-semibold text-ink shadow-sm hover:bg-neutral-50 active:scale-95 transition"
+            title={viewMode === 'scroll' ? 'Προβολή 3D Βιβλίου' : 'Προβολή συνεχούς κύλισης (για κινητά)'}
+          >
+            <Icon name={viewMode === 'scroll' ? 'book' : 'scroll'} size={15} />
+            <span className="hidden xs:inline">{viewMode === 'scroll' ? '3D Βιβλίο' : 'Κύλιση'}</span>
+          </button>
+        </div>
       </header>
 
       {offline && (
@@ -278,10 +335,13 @@ export default function Reader({ issue, pages, toc, intro = false, preview = fal
       {/* bottom controls */}
       <div className="pointer-events-none relative z-20 mt-auto flex flex-col items-center gap-2 px-4 pb-5">
         {closed && mode !== 'pending' && (
-          <>
-            <button type="button" onClick={() => (mode === '3d' ? apiRef.current?.open() : setTurned2d(1))} className="pointer-events-auto h-[52px] bg-ink px-7 text-base font-semibold text-white">Άνοιγμα προγράμματος</button>
+          <div className="pointer-events-auto flex flex-col items-center gap-2">
+            <div className="flex gap-2">
+              <button type="button" onClick={() => (mode === '3d' ? apiRef.current?.open() : setTurned2d(1))} className="h-[52px] bg-ink px-7 text-base font-semibold text-white shadow-md hover:bg-black active:scale-95 transition">Άνοιγμα 3D προγράμματος</button>
+              <button type="button" onClick={() => setViewMode('scroll')} className="flex items-center gap-2 h-[52px] border border-ink bg-white px-5 text-base font-semibold text-ink shadow-md hover:bg-neutral-50 active:scale-95 transition"><Icon name="scroll" size={18} />Κύλιση</button>
+            </div>
             <p className="text-[13px] text-ink-80">ή σύρετε τη δεξιά άκρη του εξωφύλλου</p>
-          </>
+          </div>
         )}
         {!closed && mode === '3d' && <p className="text-[12px] text-ink-80 sm:text-[13px]">{book?.portrait ? 'Σύρετε για αλλαγή σελίδας · διπλό πάτημα για ζουμ' : 'Σύρετε τη γωνία, πατήστε ← → ή κάντε κύλιση · διπλό κλικ για ζουμ'}</p>}
         {!closed && (
@@ -293,10 +353,17 @@ export default function Reader({ issue, pages, toc, intro = false, preview = fal
             {book?.zoomed && (
               <button type="button" onClick={() => apiRef.current?.zoomOut()} title="Σμίκρυνση" aria-label="Σμίκρυνση" className="grid h-11 w-11 place-items-center"><Icon name="zoomOut" /></button>
             )}
-            <button type="button" onClick={() => setReading(true)} title="Λειτουργία ανάγνωσης" className="flex h-11 items-center gap-2 px-3"><Icon name="read" size={18} />Ανάγνωση</button>
+            <button type="button" onClick={() => setViewMode('scroll')} title="Προβολή συνεχούς κύλισης για κινητά" className="flex h-11 items-center gap-1.5 px-3 hover:bg-white/10 transition"><Icon name="scroll" size={17} />Κύλιση</button>
+            <button type="button" onClick={downloadPdf} disabled={exportingPdf} title="Λήψη PDF" className="flex h-11 items-center gap-1.5 px-3 hover:bg-white/10 transition"><Icon name="download" size={17} />PDF</button>
             <button type="button" onClick={() => setMenu((m) => !m)} aria-label="Περισσότερα" aria-expanded={menu} title="Περισσότερα" className="grid h-11 w-11 place-items-center"><Icon name="more" /></button>
             {menu && (
-              <div role="menu" className="absolute bottom-[calc(100%+6px)] right-0 flex min-w-[220px] flex-col bg-ink py-1 text-left text-white">
+              <div role="menu" className="absolute bottom-[calc(100%+6px)] right-0 flex min-w-[220px] flex-col bg-ink py-1 text-left text-white shadow-xl">
+                <button role="menuitem" type="button" className="flex items-center gap-2 h-11 px-4 text-left hover:bg-white/10" onClick={downloadPdf}>
+                  <Icon name="download" size={16} />Λήψη αρχείου PDF
+                </button>
+                <button role="menuitem" type="button" className="flex items-center gap-2 h-11 px-4 text-left hover:bg-white/10" onClick={() => { setMenu(false); setViewMode('scroll'); }}>
+                  <Icon name="scroll" size={16} />Προβολή Κύλισης
+                </button>
                 <button role="menuitem" type="button" className="h-11 px-4 text-left hover:bg-white/10" onClick={() => goTo(pages.find((p) => p.kind === 'section' && p.section === 'contents' && p.part === 1)?.number ?? 1)}>Περιεχόμενα</button>
                 {canFullscreen && <button role="menuitem" type="button" className="h-11 px-4 text-left hover:bg-white/10" onClick={fullscreen}>Πλήρης οθόνη</button>}
                 <button role="menuitem" type="button" className="h-11 px-4 text-left hover:bg-white/10" onClick={share}>Κοινοποίηση σελίδας</button>
@@ -340,18 +407,93 @@ export default function Reader({ issue, pages, toc, intro = false, preview = fal
         </div>
       )}
 
-      {reading && (
-        <div role="dialog" aria-modal="true" aria-label="Λειτουργία ανάγνωσης" className="fixed inset-0 z-40 flex flex-col bg-white">
-          <div className="flex items-center gap-1 border-b border-ink py-1 pl-4 pr-1 sm:pl-8">
-            <span className="flex-1 text-[13px] text-ink-80">Ανάγνωση · {visible.length ? `σελ. ${visible.join('–')}` : 'εξώφυλλο'}</span>
-            <button type="button" onClick={prev} aria-label="Προηγούμενη σελίδα" className="grid h-11 w-11 place-items-center"><Icon name="prev" /></button>
-            <button type="button" onClick={next} aria-label="Επόμενη σελίδα" className="grid h-11 w-11 place-items-center"><Icon name="next" /></button>
-            <button type="button" onClick={() => setReading(false)} aria-label="Κλείσιμο ανάγνωσης" className="grid h-11 w-11 place-items-center"><Icon name="close" /></button>
-          </div>
-          <div className="flex-1 overflow-y-auto" onClick={onPageClick}>
-            <div className="mx-auto max-w-[640px]">
-              {visible.length === 0 && <p className="p-6 text-ink-80">Ανοίξτε το πρόγραμμα για να διαβάσετε τις σελίδες.</p>}
-              {visible.map((n) => (<PageView key={n} issue={issue} page={pageByNumber(n)} toc={toc} fluid />))}
+      {viewMode === 'scroll' && (
+        <div role="region" aria-label="Προβολή συνεχούς κύλισης" className="fixed inset-0 z-40 flex flex-col bg-stage text-ink">
+          {/* Mobile top sticky header */}
+          <header className="sticky top-0 z-30 flex items-center justify-between border-b border-ink/15 bg-white/95 px-4 py-2.5 backdrop-blur shadow-sm">
+            <div className="flex items-center gap-2">
+              <img src="/brand/symbol-ink.png" alt="" className="h-7 w-auto" />
+              <div className="leading-tight">
+                <span className="block font-bold text-[13px]">{fixtureTitle(issue)}</span>
+                <span className="text-[11px] text-ink-60">{issue.matchday}η αγωνιστική</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={downloadPdf}
+                disabled={exportingPdf}
+                className="flex items-center gap-1.5 bg-ink px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-black active:scale-95 transition"
+                title="Λήψη του Match Programme σε PDF"
+              >
+                <Icon name="download" size={15} />
+                <span>PDF</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode('3d')}
+                className="flex items-center gap-1.5 border border-ink/20 bg-white px-3 py-1.5 text-xs font-semibold text-ink shadow-sm hover:bg-neutral-50 active:scale-95 transition"
+                title="Μετάβαση σε 3D Βιβλίο"
+              >
+                <Icon name="book" size={15} />
+                <span>3D Βιβλίο</span>
+              </button>
+            </div>
+          </header>
+
+          {/* Quick-jump horizontal section chips */}
+          <nav aria-label="Ενότητες" className="sticky top-[49px] z-20 flex gap-1.5 overflow-x-auto border-b border-ink/10 bg-neutral-100/95 px-3 py-2 backdrop-blur no-scrollbar text-xs">
+            <button type="button" onClick={() => scrollToSection('cover')} className="whitespace-nowrap px-2.5 py-1 font-medium text-ink-80 hover:text-ink hover:bg-white rounded transition">Εξώφυλλο</button>
+            {pages.filter(p => p.kind === 'section').map(p => (
+              <button
+                key={p.number}
+                type="button"
+                onClick={() => scrollToSection(`page-${p.number}`)}
+                className="whitespace-nowrap px-2.5 py-1 font-medium text-ink-80 hover:text-ink hover:bg-white rounded transition"
+              >
+                {p.label || `Σελ. ${p.number}`}
+              </button>
+            ))}
+            <button type="button" onClick={() => scrollToSection('back-cover')} className="whitespace-nowrap px-2.5 py-1 font-medium text-ink-80 hover:text-ink hover:bg-white rounded transition">Οπισθόφυλλο</button>
+          </nav>
+
+          {/* Continuous vertical feed of all pages */}
+          <div className="flex-1 overflow-y-auto px-3 py-4 sm:px-6 sm:py-8 overscroll-contain" onClick={onPageClick}>
+            <div className="mx-auto max-w-[620px] flex flex-col gap-6">
+              {/* Front Cover */}
+              <div id="section-cover" className="overflow-hidden bg-ink shadow-lg">
+                <CoverFront issue={issue} />
+              </div>
+
+              {/* Inside Pages */}
+              {pages.map((p) => (
+                <div key={p.number} id={`section-page-${p.number}`} className="overflow-hidden bg-white shadow-md">
+                  <PageView issue={issue} page={p} toc={toc} fluid />
+                </div>
+              ))}
+
+              {/* Back Cover */}
+              <div id="section-back-cover" className="overflow-hidden bg-ink shadow-lg">
+                <BackCover />
+              </div>
+
+              {/* Bottom footer in scroll feed */}
+              <div className="flex flex-col items-center gap-3 py-8 text-center">
+                <button
+                  type="button"
+                  onClick={downloadPdf}
+                  disabled={exportingPdf}
+                  className="flex items-center gap-2 bg-ink px-6 py-3 font-semibold text-white shadow-md hover:bg-black transition"
+                >
+                  <Icon name="download" size={18} />
+                  <span>Λήψη πλήρους Match Programme (PDF)</span>
+                </button>
+                <div className="flex gap-4 text-sm text-ink-80">
+                  <button type="button" onClick={() => scrollToSection('cover')} className="underline">Πίσω στην αρχή</button>
+                  <span>·</span>
+                  <button type="button" onClick={() => setViewMode('3d')} className="underline">Προβολή 3D Βιβλίου</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

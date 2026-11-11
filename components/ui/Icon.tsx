@@ -30,6 +30,21 @@ const paths: Record<string, JSX.Element> = {
       <path d="M6.5 9h5M13 13l4 4" />
     </>
   ),
+  download: (
+    <>
+      <path d="M10 3v9M6.5 8.5 10 12l3.5-3.5" />
+      <path d="M4 15h12" />
+    </>
+  ),
+  book: (
+    <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H16v14H6.5A2.5 2.5 0 0 0 4 18.5V4.5zM4 16h12" />
+  ),
+  scroll: (
+    <>
+      <rect x="5" y="2.5" width="10" height="15" rx="2" />
+      <path d="M10 5.5v3" />
+    </>
+  ),
 };
 
 export function Icon({ name, size = 20 }: { name: keyof typeof paths | string; size?: number }) {
